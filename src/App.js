@@ -1,15 +1,16 @@
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import Footer from './components/Footer/Footer'
+import './css/style.css'
 
 function App() {
   return (
-    <div className="App">
+    <div className="todo">
 
       <Header />
       <Main />
       <Footer />
-      
+
     </div>
   );
 }

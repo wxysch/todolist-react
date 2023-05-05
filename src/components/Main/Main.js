@@ -1,6 +1,19 @@
 function Main() {
   return (
-    <div>Main</div>
+    <div className="todolist-menu">
+      <div className="todolist-menu-item">
+        <button></button>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div className="todolist-menu-item">
+        <button></button>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div className="todolist-menu-item">
+        <button></button>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+    </div>
   )
 }
 

@@ -1,6 +1,9 @@
 function Header() {
   return (
-    <div>Header</div>
+    <div className="header">
+        <button>+</button>
+        <input placeholder='Create a new todo..' type="text" />
+    </div>
   )
 }
 
