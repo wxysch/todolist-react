@@ -27,7 +27,7 @@ body{
 }
 
 .header > button {
-    margin-right: 10px;
+    margin-right: 20px;
     width: 30px;
     height: 30px;
     border: 2px solid #a9a6ca;
@@ -40,6 +40,7 @@ body{
     background-color: transparent;
     border: none;
     outline: none;
+    color: white;
 }
 /* .banner{
     background-size: cover;
@@ -55,10 +56,9 @@ body{
     display: flex;
     align-items: center;
     column-gap: 10px;
-    padding: 15px;
+    padding: 10px;
 }
 .todolist-menu-item > button{
-    margin-right: 10px;
     width: 30px;
     height: 30px;
     border: 2px solid #a9a6ca;
@@ -70,6 +70,12 @@ body{
 .todolist-menu-item > p{
     color :#9ca5cc;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.todolist-menu-item-right>button{
+    margin-right: 10px;
+    background-color: transparent;
+    color: aliceblue;
+    border: none;
 }
 .footer{
     padding-top: 20px;

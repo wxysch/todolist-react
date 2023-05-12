@@ -1,11 +1,33 @@
-function Footer() {
+function Footer({status, setStatus,todoList}) {
+  const btnList = [
+    {
+      id: 1,
+      text: 'all'
+    },
+    {
+      id: 2,
+      text: 'active'
+    },
+    {
+      id: 3,
+      text: 'completed'
+    },
+    {
+      id: 4,
+      text: 'deleted'
+    }
+  ]
   return (
     <div className="footer">
-      <p className="footer-count"><i>3</i> items</p>
+      <p className="footer-count"><i>{todoList.length}</i> items</p>
       <div className="footer-center">
-      <button className="footer-btn">all</button>
-      <button className="footer-btn">active</button>
-      <button className="footer-btn">completed</button>
+        {
+          btnList.map(item=>{
+            return <button key={item.id} onClick={()=>{
+              setStatus(item.text)
+            }} className="footer-btn">{item.text}</button>
+          })
+        }
       </div>
       <button className="footer-btn">clear completed</button>
     </div>
@@ -13,3 +35,6 @@ function Footer() {
 }
 
 export default Footer
+
+
+
