@@ -1,63 +1,110 @@
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import Footer from './components/Footer/Footer'
+import Header from './Components/Header/Header'
+import Main from './Components/Main/Main'
+import Footer from './Components/Footer/Footer'
 import './css/style.css'
-import {useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
-  const[data,setData] = useState([])
-  const[todoList,setTodoList] = useState([])
-  const[status,setStatus] = useState('all')
-  const setKey = (key, id) =>{
-    setData(data.map(item =>{
-      if(id === item.id){
-        return{
-          ...item,
-          [key]: !item[key]
+  const [data, setData] = useState([]);
+  const [local, setLocal] = useState([])
+  const [todolist, setTodoList] = useState([]);
+  const [status, setStatus] = useState('all');
+
+  const deletePermanently = (id) => {
+    setData(local.filter(item => {
+      return id !== item.id
+    }))
+  }
+    useEffect(()=>{
+      setLocal(JSON.parse(localStorage.getItem("key")))
+    },[])
+
+  const setKey = (key, id) => {
+    setData(
+      data.map(item => {
+        if (id === item.id) {
+          return {
+            ...item,
+            [key]: !item[key]
+          }
+        } else {
+          return item
         }
-      }else{
+      }))
+  }
+  const saveToLocal = () =>{
+    localStorage.setItem("key",JSON.stringify(data))
+  }
+  const clearCompleated = () => {
+
+    setData(data.map(item => {
+
+      if (item.completed) {
+        return {
+
+          ...item,
+
+          deeleted: true
+        }
+
+      } else {
         return item
       }
+
     }))
   }
 
-  useEffect(()=>{
+  const toCorrectfunc = (text, id) => {
+    setData(data.map(item=> {
+      if(item.id === id) {
+        return {
+          ...item,
+          text,
+          correct:false
+        }
+      }
+      return item
+    }))
+  }
+  useEffect(() => {
     switch (status) {
-      case 'all':{
-        setTodoList(data.filter(item =>{
+      case 'all': {
+        setTodoList(local.filter(item => {
           return !item.deleted
-        }))
-        break;
+        }));
+        break
       }
-      case 'active':{
-        setTodoList(data.filter(item =>{
+      case 'active': {
+        setTodoList(local.filter(item => {
           return !item.deleted && !item.completed
-        }))
-        break;
+        }));
+        break
       }
-      case 'completed':{
-        setTodoList(data.filter(item =>{
+      case 'completed': {
+        setTodoList(local.filter(item => {
           return !item.deleted && item.completed
-        }))
-        break;
+        }));
+        break
       }
       case 'deleted': {
-        setTodoList(data.filter(item =>{
-          return item.deleted
-        }))
+        setTodoList(local.filter(item => {
+          return item.deleted;
+        }));
+        break
       }
     }
-  },[data,status])
+  }, [local, status])
   return (
     <div className="body">
       <div className="todo">
-      <div className="banner">
-        <h1>TODO</h1>
+        <div className="banner">
+          <h1 className="h1-todoList">TODO</h1>
+        </div>
+        <Header data={data} local={local} setData={setData} saveToLocal={saveToLocal}/>
+        <Main toCorrectfunc={toCorrectfunc} deletePermanently={deletePermanently} 
+        status={status} todoList={todolist} setKey={setKey} setTodoList={setTodoList} />
+        <Footer clearCompleated={clearCompleated} status={status} setStatus={setStatus} todoList={todolist} />
       </div>
-      <Header data={data} setData={setData}/>
-      <Main status={status} setKey={setKey} todoList={todoList}/>
-      <Footer status={status} setStatus={setStatus} todoList={todoList}/>
-    </div>
     </div>
   );
 }

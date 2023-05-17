@@ -1,29 +1,30 @@
-import { useState } from "react"
+import { useState } from "react";
 
-function Header({data, setData}) {
-  const[text,setText] = useState('')
-  const addTodo = () =>{
-    if (text !== '') {
+function Header({ data, setData,saveToLocal }) {
+  const [text, setText] = useState('');
+  const addToDo = () => {
+    if (text.trim() !== '') {
       setData([{
         completed: false,
         deleted: false,
         important: false,
         correct: false,
-        text: text.trim(),
-        id:Math.random()
-      },...data])
+        text,
+        id: Math.random(),
+      }, ...data]);
       setText('')
     }
+    saveToLocal()
   }
+  
   return (
     <div className="header">
-        <button onClick={()=>{
-          addTodo()
-        }}>+</button>
-        <input onChange={e =>{
-          setText(e.target.value)
-        }}
-        placeholder='Create a new todo..' type="text"  value={text}/>
+      <button onClick={() => {
+        addToDo()
+      }}>+</button>
+      <input className="header-input" onChange={e => {
+        setText(e.target.value)
+      }} placeholder='Create   a new todo..' type="text" value={text} />
     </div>
   )
 }

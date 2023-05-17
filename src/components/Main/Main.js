@@ -1,27 +1,60 @@
-function Main({todoList,setKey, status}) {
+import ToCorrect from "./ToCorrect";
+
+function Main({ todoList, setKey, status, deletePermanently,toCorrectfunc }) {
   return (
     <div className="todolist-menu">
-
-{
-  todoList.map(item => {
-   return <div key={item.id} className="todolist-menu-item">
-        <button onClick={()=>{
-          setKey('completed',item.id)
-        }}>{item.completed ? '+' : ''}</button>
-        <p>{item.text}</p>
-        <div className="todolist-menu-item-right">
-        <button>correct</button>
-        <button>important</button>
-        <button onClick={()=>{
-          setKey('deleted', item.id)
-        }}>delete</button>
-      </div>
-      </div>
-      
-  })
-}
-    </div>
+      {
+        todoList.map(item => {
+          return <div key={item.id}
+            className={item.important
+              ? "todolist-menu-item todolist-menu-item-important "
+              : "todolist-menu-item"}>
+            {
+              item.correct
+                ? <ToCorrect item={item} setKey={setKey}
+                  toCorrectfunc={toCorrectfunc}/>
+               : <>
+<div>
+              <button className="bnt-active" onClick={() => {
+                setKey('completed', item.id)
+              }}>{item.completed ? '///' : ''}</button>
+             </div>
+            <p >{item.text}</p>
+            <div className="todoList-menu-item-right">
+              {
+                status === 'deleted'
+                 ? <>
+                    <button className="btn-deleted-permanently" onClick={() => {
+                      deletePermanently(item.id);
+                    }}></button>
+                    <button className="btn-restore" onClick={() => {
+                      setKey('deleted', item.id)
+                    }}></button>
+                  </>
+                  : <>
+                    <button className="btn-correct"
+                      onClick={() => {
+                        setKey('correct', item.id)
+                      }}>
+                    </button>
+                    <button className="btn-important"
+                      onClick={() => {
+                        setKey('important', item.id)
+                      }} >
+                    </button>
+                    <button className="btn-deleted" onClick={() => {
+                      setKey('deleted', item.id)
+                    }}></button>
+                  </>
+              }
+            </div>
+                </>
+            }            
+          </div >
+        })
+      }
+    </div >
   )
 }
 
-export default Main 
+export default Main

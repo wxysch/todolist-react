@@ -1,33 +1,50 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #171723;
 }
-
-.body{
+.h1-todoList {
+    color:#fff;
+    margin-bottom: 10px;
+}
+.body {
     position: absolute;
-    background: no-repeat center url(../img/pexels-jan-van-bizar-10988262.jpg);
+    background: no-repeat center url(../img/fff-2.jpg);
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
     height: 45vh;
 }
 
-.todo{
-    width: 400px;
-    margin: 150px auto;
+
+
+.header-input {
+    width: 280px;
 }
-.header{
+
+.todo {
+    width: 520px;
+    margin: 150px auto;
+    max-height: 520px;
+    overflow-x: auto;
+}
+
+.header {
     background-color: #24273d;
     padding: 15px;
     border-radius: 5px;
+    border-bottom: 3px solid rgba(255, 251, 0, 0.467);
+    width: 520px;
+    box-shadow: 5px 4px 3px 1px snow;
+
 }
 
-.header > button {
-    margin-right: 20px;
+.header>button {
+    margin-right: 10px;
     width: 30px;
     height: 30px;
     border: 2px solid #a9a6ca;
@@ -36,62 +53,165 @@ body{
     background-color: transparent;
     cursor: pointer;
 }
-.header > input{
+
+.header>input {
     background-color: transparent;
     border: none;
     outline: none;
     color: white;
 }
+
 /* .banner{
     background-size: cover;
     width: 100vh;
     height: 50vh;
     row-gap: 20px;
 } */
-.todolist-menu{ 
+.todolist-menu {
     background-color: #24273d;
     margin-top: 25px;
 }
-.todolist-menu-item{
+
+.todolist-menu-item {
     display: flex;
     align-items: center;
     column-gap: 10px;
-    padding: 10px;
+    padding: 15px;
+    border-bottom: 1px solid #f4f4f4;
 }
-.todolist-menu-item > button{
+
+.todolist-menu-item-important {
+   background-color: royalblue;
+}
+
+.bnt-active {
     width: 30px;
     height: 30px;
+    border-radius: 50%;
     border: 2px solid #a9a6ca;
     color: #a9a6ca;
-    border-radius: 50%;
+
     background-color: transparent;
 }
 
-.todolist-menu-item > p{
-    color :#9ca5cc;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.todolist-menu-item>p {
+    color: #9ca5cc;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-.todolist-menu-item-right>button{
-    margin-right: 10px;
-    background-color: transparent;
-    color: aliceblue;
-    border: none;
-}
-.footer{
+
+.footer {
+    max-width: 520px;
     padding-top: 20px;
     background-color: #24273d;
     display: flex;
     justify-content: space-around;
 }
-.footer-btn{
+
+.todoList-menu-item-right {
+    position: relative;
+    width: 400px;
+}
+.btn-deleted-permanently {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    background-image: url(../img/icon-png/deleted.png);
     background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 27px;
+    padding: 2.5px;
+    position: absolute;
+    right: 0;
+    top: -10.5px;
+}
+.btn-restore {
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    background-image: url(../img/icon-png/restore.png);
+    background-color: transparent;
+    background-size: 20px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 27px;
+    position: absolute;
+    right: 40px;
+    top: -12.5px;
+}
+.btn-correct {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    background-image: url(../img/icon-png/to\ correct.png);
+    background-color: transparent;
+    background-size: 33px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 80px;
+    top: -12px;
+}
+
+.btn-important {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    background-image: url(../img/icon-png/important.png);
+    background-color: transparent;
+    background-size: 20px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 27px;
+    position: absolute;
+    right: 40px;
+    top: -10.5px;
+}
+
+.btn-deleted {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    background-image: url(../img/icon-png/deleted.png);
+    background-color: transparent;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 27px;
+    padding: 2.5px;
+    position: absolute;
+    right: 0;
+    top: -10.5px;
+}
+button:hover {
+    transform: scale(1.1);
+}
+button:active {
+    transform: scale(0.9);
+}
+.active {
+    background-color: rgb(130, 207, 255);
+}
+.footer-btn {
+    background-color: transparent;
+    font-size: 15px;
     padding-right: 10px;
     border: none;
-    color :#9ca5cc;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #9ca5cc;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     margin-bottom: 15px;
 }
-.footer-count{
-    color :#9ca5cc;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+.footer-count {
+    color: #9ca5cc;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
