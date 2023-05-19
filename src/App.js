@@ -1,109 +1,131 @@
-import Header from './Components/Header/Header'
-import Main from './Components/Main/Main'
-import Footer from './Components/Footer/Footer'
-import './css/style.css'
-import { useState, useEffect } from 'react'
+import Header from "./Components/Header/Header";
+import Main from "./Components/Main/Main";
+import Footer from "./Components/Footer/Footer";
+import "./css/style.css";
+import { useState, useEffect } from "react";
 
 function App() {
   const [data, setData] = useState([]);
-  const [local, setLocal] = useState([])
   const [todolist, setTodoList] = useState([]);
-  const [status, setStatus] = useState('all');
-
+  const [status, setStatus] = useState("all");
   const deletePermanently = (id) => {
-    setData(local.filter(item => {
-      return id !== item.id
-    }))
-  }
-    useEffect(()=>{
-      setLocal(JSON.parse(localStorage.getItem("key")))
-    },[])
+    setData(
+      data.filter((item) => {
+        return id !== item.id;
+      })
+    );
+  };
+  const saveTolocal = () => {
+    localStorage.setItem("key", JSON.stringify(data));
+  };
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("key")))
+  }, []);
 
   const setKey = (key, id) => {
     setData(
-      data.map(item => {
+      data.map((item) => {
         if (id === item.id) {
           return {
             ...item,
-            [key]: !item[key]
-          }
+            [key]: !item[key],
+          };
         } else {
-          return item
+          return item;
         }
-      }))
-  }
-  const saveToLocal = () =>{
-    localStorage.setItem("key",JSON.stringify(data))
-  }
+      })
+    );
+  };
   const clearCompleated = () => {
+    setData(
+      data.map((item) => {
+        if (item.completed) {
+          return {
+            ...item,
 
-    setData(data.map(item => {
-
-      if (item.completed) {
-        return {
-
-          ...item,
-
-          deeleted: true
+            deeleted: true,
+          };
+        } else {
+          return item;
         }
+      })
+    );
+  };
 
-      } else {
-        return item
-      }
-
-    }))
-  }
-
-  const toCorrectfunc = (text, id) => {
-    setData(data.map(item=> {
-      if(item.id === id) {
-        return {
-          ...item,
-          text,
-          correct:false
+  const toCorrectFunc = (text, id) => {
+    setData(
+      data.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            text,
+            correct: false,
+          };
         }
-      }
-      return item
-    }))
-  }
+        return item;
+      })
+    );
+  };
   useEffect(() => {
     switch (status) {
-      case 'all': {
-        setTodoList(local.filter(item => {
-          return !item.deleted
-        }));
-        break
+      case "all": {
+        setTodoList(
+          data.filter((item) => {
+            return !item.deleted;
+          })
+        );
+        break;
       }
-      case 'active': {
-        setTodoList(local.filter(item => {
-          return !item.deleted && !item.completed
-        }));
-        break
+      case "active": {
+        setTodoList(
+          data.filter((item) => {
+            return !item.deleted && !item.completed;
+          })
+        );
+        break;
       }
-      case 'completed': {
-        setTodoList(local.filter(item => {
-          return !item.deleted && item.completed
-        }));
-        break
+      case "completed": {
+        setTodoList(
+          data.filter((item) => {
+            return !item.deleted && item.completed;
+          })
+        );
+        break;
       }
-      case 'deleted': {
-        setTodoList(local.filter(item => {
-          return item.deleted;
-        }));
-        break
+      case "deleted": {
+        setTodoList(
+          data.filter((item) => {
+            return item.deleted;
+          })
+        );
+        break;
       }
     }
-  }, [local, status])
+  }, [data, status]);
   return (
     <div className="body">
       <div className="todo">
-        <div className="banner">
+        
+        <div className="banner d-flex justify-content-between">
           <h1 className="h1-todoList">TODO</h1>
+          <button className="save-btn" onClick={()=>{saveTolocal()
+        }}>to save</button>
         </div>
-        <Header data={data} local={local} setData={setData} saveToLocal={saveToLocal}/>
-        <Main toCorrectfunc={toCorrectfunc} deletePermanently={deletePermanently} 
-        status={status} todoList={todolist} setKey={setKey} setTodoList={setTodoList} />
-        <Footer clearCompleated={clearCompleated} status={status} setStatus={setStatus} todoList={todolist} />
+        <Header data={data} setData={setData} saveToLocal={saveTolocal} />
+        <Main
+          toCorrectFunc={toCorrectFunc}
+          deletePermanently={deletePermanently}
+          status={status}
+          todoList={todolist}
+          setKey={setKey}
+          setTodoList={setTodoList}
+        />
+        <Footer
+          clearCompleated={clearCompleated}
+          status={status}
+          setStatus={setStatus}
+          todoList={todolist}
+        />
       </div>
     </div>
   );

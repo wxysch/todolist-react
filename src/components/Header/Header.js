@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Header({ data, setData,saveToLocal }) {
+function Header({ data, setData }) {
   const [text, setText] = useState('');
   const addToDo = () => {
     if (text.trim() !== '') {
@@ -14,9 +14,7 @@ function Header({ data, setData,saveToLocal }) {
       }, ...data]);
       setText('')
     }
-    saveToLocal()
   }
-  
   return (
     <div className="header">
       <button onClick={() => {
@@ -24,7 +22,7 @@ function Header({ data, setData,saveToLocal }) {
       }}>+</button>
       <input className="header-input" onChange={e => {
         setText(e.target.value)
-      }} placeholder='Create   a new todo..' type="text" value={text} />
+      }} placeholder='Create a new todo..' type="text" value={text} />
     </div>
   )
 }

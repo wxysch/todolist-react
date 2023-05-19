@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    background-image: url(../../../public/img/fff.jpg);
+    position: absolute;
+    width: 100%;
+    height: 45vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 55%;
+    top: 0;
+}
+button {
+    color: #FFF;
+}
+body {
+    background-color: #171723;
+}
+
+p {
+    color: #a4a4ad;
+    padding-left: 10px;
+}
+
+input {
+    color: #a4a4ad;
+}
+button:hover {
+    color:#Fff;
+}
+.header {
+    background-color: #24273d;
+    padding: 16px;
+    border-radius: 5px;
+    margin-top: 300px;
+    border-bottom: 0.5px;
+    border-bottom: #fbfb1c 0.6px solid;
+}
+.todoList-menu-item {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    list-style: lower-alpha;
+    text-decoration: none;
+    margin-bottom: 1px;   
+    margin-top: 2px; 
+}
+.todoList-menu-item > button {
+    border-radius: 50%;
+    width: 30px;height: 30px;
+    background:none;
+    border :#a9a6ca 1px solid;
+}
+.todoList-menu-item > p {
+    padding-left:18px;
+}
+
+.todo {
+    width: 500px;
+    max-height: 400px;
+    margin: 150px auto;
+}
+
+.todoList-menu-item {
+    width: 100%;
+    height: 80px;
+    border-bottom: 0.5px solid #6c6c70;
+    margin-top: 1000px;
+}
+
+
+.todoList-menu {
+    background-color: #24273d;
+    margin-top: 25px;
+}
+
+.footer {
+    background-color: #24273d;
+    width: 500px;
+}
+
+.header>button {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #a9a6ca;
+    color: #a9a6ca;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.header {
+    border-radius: 10px;
+}
+
+.header-input {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    }
+
+
+.body-footer {
+    width: 500px;
+    position: relative; 
+}
+
+.footer-count {
+    width: 65px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 50px;
+    margin-top: 1px;
+    padding-left: 60px;
+}
+
+.footer-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 90px;
+}
+
+.footer-btn {
+    border: none;
+    background: none;
+    color: #616161;
+    font-size: 18px;
+}
+
+.footer-btn:nth-child(1) {
+    width: 30px;
+    color: blue;
+}
+
+.footer-btn:nth-child(2) {
+    width: 70px;
+}
+
+.footer-btn:nth-child(3) {
+    width: 80px;
+}
+
+.footer-btn4 {
+    background-color: #24273d;
+    color: #616161;
+    border: none;
+    position: absolute; right: 15px;
+    top: 17px;
+    font-size: 15px;
+}
